@@ -12,4 +12,11 @@ fi
 
 rake db:migrate
 
-exec rails server -b 0.0.0.0 -p 3000
+if [ -z "$PORT" ]
+then
+      echo "Start at port 3000"
+      exec rails server -b 0.0.0.0 -p 3000
+else
+      echo "Start at port $PORT"
+      exec rails server -b 0.0.0.0 -p $PORT
+fi
